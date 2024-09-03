@@ -144,7 +144,7 @@ jobs:
     if: github.event_name == 'release' || github.event.inputs.test_release == 'true'
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: Jitterbug
       - name: Package IPA
@@ -177,7 +177,7 @@ jobs:
     if: github.event_name == 'release' || github.event.inputs.test_release == 'true'
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: JitterbugLite
       - name: Package IPA
@@ -215,7 +215,7 @@ jobs:
           p12-file-base64: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
           p12-password: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
       - name: Download Artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: JitterbugMac
       - name: Sign Binaries
@@ -247,7 +247,7 @@ jobs:
     if: github.event_name == 'release' || github.event.inputs.test_release == 'true'
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
       - name: Fix Permissions
         run: for i in jitterbugpair-*/; do chmod +x $i/* ; zip -r -j "${i%/}.zip" "$i"; done
       - name: Upload macOS
